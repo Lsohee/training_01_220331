@@ -1,0 +1,122 @@
+*{margin:0; padding:0;}
+#container{
+  width: 1920px;
+  height:1080px;
+  /* width:100vw;
+  height:100vh; */
+  display: flex;
+  overflow: hidden;
+  background-color: bisque;
+}
+#container div{
+  border: 1px solid maroon;
+}
+/* 보이는 화면을 넘어가는 div는 어떻게 만드는가 */
+/* %으로 하면 절대 부모 div를 넘어갈수 없다. --> vw로 하면?
+    넘어가지 않는다 
+    부모를 넘어가는 크기의 div는 어떻게?
+    >질문이 명확하지 않음
+
+
+    !!!!!묻기전에 질문 다시 구성하기!!!!!
+    무엇을  --  te를
+
+    어떻게 하고싶어서 -- 일부가 오른쪽 화면 바깥으로 나가게 하고싶음
+
+    1.이렇게 해봄 -- te의 width를 2000px으로 줘봄
+    --> te의 width가 줄어듦 -->부모 크기를 넘어가지 않음
+      container의 flex때문인듯
+
+    2.이렇게 해봄 -- te의 자식으로 60번 item을 만들어서 60번 item의 width를 절대값으로 정함
+    --> 60번 item 일부가 te밖으로 나가게 하는데 성공 했으나 화면 밖으로 나가게 만드는데는 성공하지 못하고 화면을 축소했을시 te을 넘어간 60번 item이 보임
+
+    3.이렇게 해봄 --> container의 크기를 절대값으로 지정하고 overflow:hiddenl을 줌
+    -->  container밖으로 나간 60번 item이 보이지 않게 됐지만 container의 크기를 절대값으로 지정해서 화면 비율을 축소시 container밖이 보임
+
+    */
+
+
+#re>div{
+  width:100%;
+  height:50%;
+}
+#re>div:nth-child(1){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* top-inside */
+
+#re>div:nth-child(1)>div{
+  width:40%;
+}
+
+/* number */
+#re>div:nth-child(1)>div:nth-child(1){
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+  height:10%
+}
+#re>div:nth-child(1)>div:nth-child(1)>div{
+  margin: 20px;
+}
+#re>div:nth-child(1)>div:nth-child(1)>div:nth-child(1){
+  font-weight: bold;
+}
+
+
+
+/* write */
+#re>div:nth-child(1)>div:nth-child(2){
+  height:30%
+}
+
+/* icon */
+#re>div:nth-child(1)>div:nth-child(3){
+  height:15%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  overflow: hidden;
+}
+#re>div:nth-child(1)>div:nth-child(3)>div{
+  width:50px;
+  height:50px;
+  border-radius: 20px;
+}
+/* --------bottom-------------------- */
+#re>div:nth-child(2){
+  /* justify-content: center; */
+  display: flex;
+  align-items: center;
+}
+#re>div:nth-child(2)>div{
+  height:fit-content
+}
+/* ---side------------------- */
+#te{
+  width:15%;
+  /* display: flex; */
+  /* align-items: flex-end; */
+}
+#te>div{
+  width:4000px;
+  height:1000px;
+  position: relative;
+  /* right:-200px; */ 
+  top:40%;
+  border-radius: 150px;
+}
+/* 질문 
+무엇을 -- 60번 item
+
+어떻게 -- te의 하단에 위치시키고픔
+
+1.이렇게 해봄 -- te에 display:flex;  align-items:flex-end;를 줌
+--> 60번 아이템의 width가 te에 맞춰짐  --> display 때문
+
+2. 이렇게 해봄 --> 60번 아이템에 직접 position:relative; top:40%;을 줌
+    --> 60번 item의 크기가 변하지 않고 하단으로 이동시키는데 성공
+*/
